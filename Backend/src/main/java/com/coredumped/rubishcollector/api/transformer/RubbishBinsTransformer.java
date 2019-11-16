@@ -4,7 +4,7 @@ import com.coredumped.rubishcollector.api.dto.RubbishBinsDto;
 import com.coredumped.rubishcollector.api.model.RubbishBins;
 import org.springframework.beans.BeanUtils;
 
-public class RubishBinsTransformer {
+public class RubbishBinsTransformer {
 
     public static RubbishBinsDto convertToDto(RubbishBins rubbishBins) {
         RubbishBinsDto rubbishBinsDto = new RubbishBinsDto();

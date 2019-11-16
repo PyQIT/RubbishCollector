@@ -25,27 +25,27 @@ import java.util.Properties;
 @EnableJpaAuditing
 public class DatabaseConnection {
 
-    @Value("org.h2.Driver")
+    @Value("${rubishcollector.spring.datasource.driverClassName}")
     private String DriverClassName;
-    @Value("jdbc:h2:mem:test;DB_CLOSE_ON_EXIT=FALSE;;INIT=CREATE SCHEMA IF NOT EXISTS TEST_SCHEMA;DB_CLOSE_DELAY=-1")
+    @Value("${rubishcollector.spring.datasource.url}")
     private String url;
-    @Value("sa")
+    @Value("${rubishcolector.spring.datasource.username}")
     private String userName;
-    @Value("")
+    @Value("${rubishcollector.spring.datasource.password}")
     private String password;
-    @Value("com.coredumped.rubishcollector.api.model")
+    @Value("${rubishcollector.package}")
     private String packages;
-    @Value("hibernate.hm2ddl.show_sql")
+    @Value("${rubishcollector.show_sql}")
     private String showSql;
-    @Value("hibernate.hbm2ddl.auto")
+    @Value("${rubishcollector.hbm2ddl.auto}")
     private String crud;
-    @Value("hibernate.dialect")
+    @Value("${rubishcollector.dialect}")
     private String dialect;
-    @Value("org.hibernate.dialect.H2Dialect")
+    @Value("${rubishcollector.h2dialect}")
     private String h2dialect;
-    @Value("true")
+    @Value("${rubishcollector.show.sql.decision}")
     private String showSqlDecision;
-    @Value("update")
+    @Value("${rubishcollector.set.crud}")
     private String crudDecision;
 
 
