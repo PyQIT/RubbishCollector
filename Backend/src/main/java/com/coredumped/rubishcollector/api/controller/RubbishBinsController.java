@@ -7,6 +7,7 @@ import com.coredumped.rubishcollector.api.transformer.RubbishBinsTransformer;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -35,10 +36,10 @@ public class RubbishBinsController {
         return rubbishBins.stream().map(RubbishBinsTransformer::convertToDto).collect(Collectors.toList());
     }
 
-    @PutMapping("/client")
+    @PutMapping("/client/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public void updateRubbishBinStatus(){
-
+    public ResponseEntity<Object> updateRubbishBinStatus(@RequestBody RubbishBins rubbishBins, @PathVariable Long id){
+        return rubbishBinsService.updateRubbishBin(rubbishBins,id);
     }
 
 

@@ -1,6 +1,8 @@
 package com.coredumped.rubishcollector.api.model;
 
+import com.coredumped.rubishcollector.api.model.enums.RubbishBinFraction;
 import com.coredumped.rubishcollector.api.model.enums.RubbishBinState;
+import com.coredumped.rubishcollector.api.model.enums.RubbishBinType;
 import lombok.*;
 import org.hibernate.envers.Audited;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -37,13 +39,19 @@ public class RubbishBins {
     private String street;
 
     @Column(name = "city", nullable = false)
-    @NotNull(message = "City cannot be empty.")
     private String city;
 
     @Column(name = "country", nullable = false)
-    @NotNull(message = "Country cannot be empty.")
     @Enumerated(EnumType.STRING)
     private RubbishBinState country;
+
+    @Column(name = "type", nullable = false)
+    @Enumerated(EnumType.STRING)
+    private RubbishBinType type;
+
+    @Column(name = "fraction", nullable = false)
+    @Enumerated(EnumType.STRING)
+    private RubbishBinFraction fraction;
 
     @Audited
     @LastModifiedDate
