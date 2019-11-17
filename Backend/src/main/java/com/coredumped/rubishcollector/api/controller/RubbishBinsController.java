@@ -38,8 +38,8 @@ public class RubbishBinsController {
 
     @PutMapping("/client/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<Object> updateRubbishBinStatus(@RequestBody RubbishBins rubbishBins, @PathVariable Long id){
-        return rubbishBinsService.updateRubbishBin(rubbishBins,id);
+    public void updateRubbishBinStatus(@RequestBody RubbishBins rubbishBins, @PathVariable Long id){
+        rubbishBinsService.updateRubbishBin(rubbishBins,id);
     }
 
 

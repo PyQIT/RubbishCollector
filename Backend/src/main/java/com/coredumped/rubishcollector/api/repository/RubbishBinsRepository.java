@@ -11,4 +11,5 @@ import java.util.List;
 public interface RubbishBinsRepository extends JpaRepository<RubbishBins, Long> {
     List<RubbishBins> getRubbishBinsByCountry(RubbishBinState rubbishBinState);
     List<RubbishBins> getRubbishBinsByFillEquals(Integer fill);
+    RubbishBins getRubbishBinsById(Long id);
 }

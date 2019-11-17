@@ -7,12 +7,10 @@ import com.coredumped.rubishcollector.api.model.enums.RubbishBinType;
 import com.coredumped.rubishcollector.api.repository.RubbishBinsRepository;
 import com.coredumped.rubishcollector.api.service.RubbishBinsService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
-import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service
@@ -32,10 +30,8 @@ public class RubbishBinsServiceImpl implements RubbishBinsService {
 
     @Override
     @Transactional
-    public ResponseEntity<Object> updateRubbishBin(RubbishBins rubbishBins, Long id){
-        Optional<RubbishBins> rubbishBinsOptional = rubbishBinsRepository.findById(id);
-        if(!rubbishBinsOptional.isPresent())
-            return ResponseEntity.notFound().build();
+    public void updateRubbishBin(RubbishBins rubbishBins, Long id){
+        rubbishBins = rubbishBinsRepository.getRubbishBinsById(id);
         rubbishBins.setCity("Kielce");
         rubbishBins.setCountry(RubbishBinState.POLAND);
         rubbishBins.setType(RubbishBinType.MIEJSKI);
@@ -43,6 +39,5 @@ public class RubbishBinsServiceImpl implements RubbishBinsService {
         rubbishBins.setFill(100);
 
         rubbishBinsRepository.save(rubbishBins);
-        return ResponseEntity.noContent().build();
     }
 }
