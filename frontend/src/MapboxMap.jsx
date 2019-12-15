@@ -1,24 +1,23 @@
 import React, {useState, useEffect} from "react";
 import ReactMapGL, {Marker, Popup} from "react-map-gl";
-//import * as rubbishBinDate from "./data/skateboard-parks";
+import * as rubbishBinDate from "./data/skateboard-parks";
 import axios from "axios";
 import MyNewComponent from "./MyNewComponent";
 
 export default function App() {
     const [viewport, setViewport] = useState({
-        latitude: 50.8703,
-        longitude: 20.6275,
+        latitude: 50.855956,
+        longitude: 20.63,
         width: "150vw",
         height: "150vh",
-        zoom: 10
+        zoom: 13
     });
 
 
-    let rubbishBinDate2 = localStorage.getItem(rubbishBinDateJSON);
-    console.log(rubbishBinDate2)
+    let rubbishBinDate2 = JSON.parse(localStorage.getItem('rubbishBinDateJSON'));
+    //console.log(rubbishBinDate2)
 
         const [selectedRubbishBin, setSelectedRubbishBin] = useState(null);
-
 
         useEffect(() => {
             const listener = e => {
@@ -33,7 +32,9 @@ export default function App() {
             };
         }, []);
 
+
         return (
+
             <div>
                 <MyNewComponent/>
                 <ReactMapGL
@@ -45,7 +46,8 @@ export default function App() {
                         setViewport(viewport);
                     }}
                 >
-                    {rubbishBinDate2.features.map(rubbishBin => (
+
+                    {rubbishBinDate.features.map(rubbishBin => (
                         <Marker
                             key={rubbishBin.properties.PARK_ID}
                             latitude={rubbishBin.geometry.coordinates[1]}
@@ -73,8 +75,11 @@ export default function App() {
                         >
                             <div>
                                 <h2>{selectedRubbishBin.properties.NAME}</h2>
+                                <p>{selectedRubbishBin.properties.FACILITY_F}</p>
                                 <p>{selectedRubbishBin.properties.DESCRIPTIO}</p>
                                 <p>{selectedRubbishBin.properties.FACILITY}</p>
+                                <p>{selectedRubbishBin.properties.PICTURE_LI}</p>
+                                <p>{selectedRubbishBin.properties.DESCRIPT_1}</p>
                             </div>
                         </Popup>
                     ) : null}

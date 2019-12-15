@@ -13,9 +13,9 @@ class MyNewComponent extends Component {
 
     render() {
 
-let  rubbishBinDate2 = localStorage.setItem('rubbishBinDateJSON', JSON.stringify(this.state.Tab))
+let  rubbishBinDateJSON = localStorage.setItem('rubbishBinDateJSON', JSON.stringify(this.state.Tab))
         return (
-            <div >{this.props.text}</div>
+            <div ></div>
         );
     }
 }
